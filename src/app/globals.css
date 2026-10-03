@@ -1,26 +1,249 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   ReviveEd Design System — Warm Intellectual Discovery Palette
+   DESIGN_VARIANCE: 7 | MOTION_INTENSITY: 4 | VISUAL_DENSITY: 3
+   ============================================================ */
+
+@theme {
+  /* ---- Foundation Colors ---- */
+  --color-ink: #f5f5f4;
+  --color-ink-soft: #e4e4e2;
+  --color-ink-muted: #b1b1ad;
+
+  --color-surface: #0d0d0e;
+  --color-surface-raised: #151516;
+  --color-parchment: #242425;
+  --color-parchment-deep: #303031;
+
+  /* ---- Primary Accent — Vibrant Orange ---- */
+  --color-amber: #ff6b3d;
+  --color-amber-soft: #ff936f;
+  --color-amber-deep: #d94e29;
+
+  /* ---- Semantic Accents (No Blue) ---- */
+  --color-teal: #FFC000; /* Replaced Teal with Bright Yellow */
+  --color-teal-soft: #FFD447;
+  --color-coral: #FF5A5F; /* Pinkish Red */
+  --color-coral-soft: #FF7B7F;
+  --color-violet: #8D5A97; /* Purple */
+  --color-violet-soft: #A373AD;
+  --color-emerald: #00D084; /* Mint/Lime Green */
+  --color-emerald-soft: #33D99C;
+
+  /* ---- Semantic Aliases ---- */
+  --color-curiosity: #E09F3E;
+  --color-evidence: #3D8B8B;
+  --color-demonstrated: #3B8A6E;
+  --color-developing: #7B6BA5;
+  --color-uncertainty: #D4654B;
+  --color-muted: #8B8B99;
+
+  /* ---- Neutral Scale ---- */
+  --color-gray-50: #fafafa;
+  --color-gray-100: #262627;
+  --color-gray-200: #303031;
+  --color-gray-300: #555556;
+  --color-gray-400: #777778;
+  --color-gray-500: #979796;
+  --color-gray-600: #b5b5b2;
+  --color-gray-700: #d0d0cd;
+  --color-gray-800: #e4e4e2;
+  --color-gray-900: #f5f5f4;
+
+  /* ---- Typography ---- */
+  --font-display: 'Geist', system-ui, -apple-system, sans-serif;
+  --font-body: 'Geist', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', 'Fira Code', 'JetBrains Mono', monospace;
+
+  /* ---- Spacing Scale ---- */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+  --space-4xl: 6rem;
+
+  /* ---- Border Radius (Neo-Brutalist: sharper edges) ---- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px; /* Still keep full for strict circles */
+
+  /* ---- Shadows (Neo-Brutalist: solid black offsets) ---- */
+  --shadow-sm: 0 4px 14px rgba(0,0,0,.18);
+  --shadow-md: 0 10px 28px rgba(0,0,0,.25);
+  --shadow-lg: 0 18px 42px rgba(0,0,0,.32);
+  --shadow-xl: 0 24px 60px rgba(0,0,0,.42);
+
+  /* ---- Transitions ---- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ---- Base Styles ---- */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: radial-gradient(circle at 75% -10%, rgba(255,107,61,.07), transparent 30%), var(--color-surface);
+  line-height: 1.6;
+}
+
+/* ---- Typography Utilities ---- */
+
+.text-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+.text-heading {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.text-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  max-width: 65ch;
+}
+
+.text-label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.text-mono {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+/* ---- Evidence Strength Indicators ---- */
+
+.evidence-strong {
+  color: var(--color-demonstrated);
+}
+
+.evidence-moderate {
+  color: var(--color-evidence);
+}
+
+.evidence-developing {
+  color: var(--color-developing);
+}
+
+.evidence-weak {
+  color: var(--color-uncertainty);
+}
+
+.evidence-insufficient {
+  color: var(--color-muted);
+}
+
+/* ---- Interactive States ---- */
+
+.interactive {
+  transition: transform var(--duration-fast) var(--ease-out-expo),
+    box-shadow var(--duration-fast) var(--ease-out-expo);
+  cursor: pointer;
+  border: 1px solid var(--color-gray-200);
+}
+
+.interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.interactive:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---- Skeleton Loading ---- */
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #222 25%, #303030 50%, #222 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+/* ---- Scrollbar Styling ---- */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-300);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-400);
+}
+
+/* ---- Focus Visible ---- */
+
+*:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ---- Container ---- */
+
+.container-main {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.dashboard-card {
+  background: linear-gradient(145deg, rgba(255,255,255,.045), rgba(255,255,255,.018));
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 640px) {
+  .container-main {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
